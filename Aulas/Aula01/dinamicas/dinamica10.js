@@ -5,12 +5,15 @@ a) Multiplicar todas as posições negativas do arranjo por -2.
 b) Retornar o menor valor do arranjo
 c) Retornar um string com uma representação formatada do arranjo.
 Ex: [10][-2][80][30] */
+import { validate } from "bycontract";
 
 function randomInt(min, max){
+    validate(arguments, ['Number', 'Number'])
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 function multiplicarNegativos(numeros) {
+    validate(numeros, 'Number[]')
     for (let i = 0; i < numeros.length; i++) {
         if (numeros[i] < 0) {
             numeros[i] = numeros[i] * -2;
@@ -20,6 +23,7 @@ function multiplicarNegativos(numeros) {
 }
 
 function menorNumero(numeros) {
+    validate(numeros, 'Number[]')
     let menorNumero = numeros[0];
     for (let i = 1; i < numeros.length; i++) {
         if (menorNumero > numeros[i]) {
@@ -30,6 +34,7 @@ function menorNumero(numeros) {
 }
 
 function arranjoToString(numeros) {
+    validate(numeros, 'Number[]')
     let string = '';
     for (let num of numeros) {
         string = string + '[' + num + ']';
